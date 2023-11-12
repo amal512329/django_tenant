@@ -1,5 +1,5 @@
 from django.db import models
-from django_tenant.models import  TenantMixin, DomainMixin
+from django_tenants.models import  TenantMixin, DomainMixin
 
 # Create your models here.
 class Client(TenantMixin):

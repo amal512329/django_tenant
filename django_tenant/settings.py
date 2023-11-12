@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 SHARED_APPS = [
     'django_tenants',
     'app',
+    'rest_framework',
    
     'django.contrib.contenttypes',
 
@@ -44,11 +45,29 @@ SHARED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
+   
 ]
 
 TENANT_APPS = ['client_app']
 
 INSTALLED_APPS = SHARED_APPS + [app for app in TENANT_APPS if app not in  SHARED_APPS ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # Example authentication
+        # Other authentication classes as needed
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # Example permission class
+        # Other permission classes as needed
+    ],
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,  # Example pagination size
+    # Other DRF settings...
+}
+
+
 
 
 
